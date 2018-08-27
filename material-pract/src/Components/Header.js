@@ -14,6 +14,5 @@ export default props =>
   <Typography variant="headline" color="inherit">
         Exercise Database
   </Typography>
-
   </Toolbar>
 </AppBar>

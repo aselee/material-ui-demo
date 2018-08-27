@@ -7,15 +7,15 @@ export const muscles = [
 ]
 
 export const exercises = [
-  {
-    id: '',
-    title: '',
-    description: '',
-    muscles: ''
-  },
+//   {
+//     id: '',
+//     title: '',
+//     description: '',
+//     muscles: ''
+//   },
   {
     id: 'overhead-press',
-    title: 'OVerhead Press',
+    title: 'Overhead Press',
     description: 'Delts exercise...',
     muscles: 'shoulders'
   },
@@ -23,7 +23,7 @@ export const exercises = [
     id: 'dips',
     title: 'Dips',
     description: 'Triceps exercise...',
-    muscles: ''
+    muscles: 'arms'
   },
   {
     id: 'barbell-curls',

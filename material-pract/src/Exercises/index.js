@@ -15,7 +15,15 @@ const styles = {
   } 
 }
 
-export default ({exercises, category }) => 
+export default ({
+  exercises, 
+  category, 
+  onSelect, 
+  exercise: { 
+    id, 
+    title = 'Welcomee!',
+    description = 'Please select an exercise from the list on the left!' }
+}) => 
   <Grid container>
     <Grid item sm>
       <Paper styles={styles.Paper}>
@@ -23,7 +31,7 @@ export default ({exercises, category }) =>
           // if the category is falsey, display the list
           // OR if the category actually equals the loop (group)
           ! category || category === group 
-            ? <Fragment>
+            ? <Fragment key={group}>
                 <Typography
                   variant="headline"
                   style={{textTransform: 'capitalize'}}
@@ -31,9 +39,15 @@ export default ({exercises, category }) =>
               {group}
                 </Typography>
                 <List component="ul">
-                  {exercises.map(({title}) =>
-                    <ListItem button>
-                      <ListItemText primary={title} />
+                  {exercises.map(({ id, title }) =>
+                    <ListItem
+                      key={id}
+                      button
+                      onClick={() => onSelect(id)}
+                    >
+                      <ListItemText 
+                      primary={title} 
+                      />
                     </ListItem>
                   )}
                 </List>
@@ -47,15 +61,14 @@ export default ({exercises, category }) =>
       <Paper styles={styles.Paper}>
         <Typography
           variant="display1"
-
         >
-          Welcomee!
+        {title}
         </Typography>
         <Typography
           variant="subheading"
           style={{marginTop: 20}}
         >
-          Please select an exercise from the list on the left
+         {description} 
         </Typography>
       </Paper>
     </Grid>

@@ -5,10 +5,15 @@ import Exercises from './Exercises';
 import { muscles, exercises } from './store.js'
 import './App.css';
 
+
+// Current progress
+// https://www.youtube.com/watch?v=iS_Jp4gkDoI
+
+
 export default class extends Component {
   state = {
     exercises,
-
+    exercise: {}
     
   }
 
@@ -46,9 +51,15 @@ export default class extends Component {
     })
   }
 
+  handleExerciseSelected = id => {
+    this.setState(({ exercises }) => ({
+      exercise: exercises.find(ex => ex.id === id)
+    }))
+  }
+
   render() {
     const exercises = this.getExercisesByMuscles(),
-      { category } = this.state
+      { category, exercise } = this.state
 
     // console.log(this.getExercisesByMuscles())
     return(
@@ -56,8 +67,10 @@ export default class extends Component {
         <Header />
 
         <Exercises 
+          exercise={exercise}
           category={category}
           exercises={exercises}
+          onSelect={this.handleExerciseSelected}
         />
 
         <Footer

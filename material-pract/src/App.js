@@ -6,7 +6,7 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress
+// Current progress: 9:35, adding icons, having issue
 // https://www.youtube.com/watch?v=iS_Jp4gkDoI
 
 

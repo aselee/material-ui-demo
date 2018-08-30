@@ -9,12 +9,12 @@ import CreateDialog from '../Exercises/Dialogs/Create';
 // import Toolbar from '@material-ui/core/Toolbar';
 
 
-export default props =>
+export default ({ muscles }) =>
 <AppBar position="static">
   <Toolbar>
   <Typography variant="headline" color="inherit" style={{flex: 1}}>
         Exercise Database
   </Typography>
-  <CreateDialog/> 
+  <CreateDialog muscles={muscles}/> 
   </Toolbar>
 </AppBar>

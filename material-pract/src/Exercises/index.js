@@ -22,7 +22,8 @@ export default ({
   exercise: { 
     id, 
     title = 'Welcomee!',
-    description = 'Please select an exercise from the list on the left!' }
+    description = 'Please select an exercise from the list on the left!' 
+  }
 }) => 
   <Grid container>
     <Grid item sm>

@@ -6,8 +6,8 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress: 9:35, adding icons, having issue
-// https://www.youtube.com/watch?v=iS_Jp4gkDoI
+// Current progress: 10:09, adding icons, having issue
+// https://www.youtube.com/watch?v=v_A0wJDV5AU
 
 
 export default class extends Component {
@@ -43,7 +43,7 @@ export default class extends Component {
   )
     // should return a object,
     // containing the keys (exercises)
-  }
+}
 
   handleCategorySelected = category => {
     this.setState({
@@ -64,7 +64,9 @@ export default class extends Component {
     // console.log(this.getExercisesByMuscles())
     return(
       <Fragment>
-        <Header />
+        <Header 
+          muscles={muscles}
+        />
 
         <Exercises 
           exercise={exercise}

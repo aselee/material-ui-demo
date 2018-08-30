@@ -1,11 +1,9 @@
 import React from 'react';
 import { Paper, Tabs } from '@material-ui/core';
-// import { Tab } from '@material-ui/core';
 import Tab from '@material-ui/core/Tab';
-
+// import { Tab } from '@material-ui/core';
 
 // Adding Footer
-
 
 export default ({ muscles, category, onSelect }) => {
 

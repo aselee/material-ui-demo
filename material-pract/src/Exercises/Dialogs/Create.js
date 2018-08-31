@@ -11,6 +11,7 @@ import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import { withStyles } from '@material-ui/core/styles';
 // import Icon from '@material-ui/core/Icon';
 // import Dialog from '@material-ui/core/Dialog';
 // import DialogActions from '@material-ui/core/DialogActions';
@@ -18,7 +19,14 @@ import Select from '@material-ui/core/Select';
 // import DialogContentText from '@material-ui/core/DialogContentText';
 // import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default class extends Component {
+
+const styles = theme => ({
+  FormControl: {
+    width: 500
+  }
+})
+
+export default withStyles(styles) (class extends Component {
   state = {
     open: false,
     exercise: {
@@ -46,10 +54,17 @@ export default class extends Component {
     })
   }
 
+  handleSubmit = () => {
+    // TODO: validate
+
+    const{ exercise } = this.state
+    this.props.onCreate(exercise)
+  }
+
 
   render() {
     const { open,exercise: { title, description, muscles} } = this.state,
-          { muscles: categories } = this.props
+          { classes, muscles: categories } = this.props
 
     return <Fragment>
     <Button variant="fab" onClick={this.handleToggle} mint>
@@ -73,9 +88,10 @@ export default class extends Component {
             value={title}
             onChange={this.handleChange('title')}
             margin="normal"
+            className={classes.FormControl}
           />
           <br/>
-          <FormControl>
+          <FormControl className={classes.FormControl}>
             <InputLabel htmlFor="muscles">
               muscles
             </InputLabel>
@@ -98,15 +114,20 @@ export default class extends Component {
             value={description}
             onChange={this.handleChange('description')}
             margin="normal"
+            className={classes.FormControl}
           />
         </form>
       </DialogContent>
         <DialogActions>
-          <Button color="primary" variant="raised">
+          <Button 
+            color="primary" 
+            variant="raised"
+            onClick={this.handleSubmit}
+            >
             Create Exercises
           </Button>
         </DialogActions>
     </Dialog>
   </Fragment>
   }
-}
+})

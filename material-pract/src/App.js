@@ -6,7 +6,7 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress: 10:09, adding icons, having issue
+// Current progress: 14:33, adding icons, having issue
 // https://www.youtube.com/watch?v=v_A0wJDV5AU
 
 
@@ -51,11 +51,20 @@ export default class extends Component {
     })
   }
 
-  handleExerciseSelected = id => {
+  handleExerciseSelect = id => {
     this.setState(({ exercises }) => ({
       exercise: exercises.find(ex => ex.id === id)
     }))
   }
+
+  handleExerciseCreate = exercise => (
+    this.setState(({ exercises }) => ({
+      exercises: [
+        ...exercises,
+        exercise
+      ]
+    }))
+  )
 
   render() {
     const exercises = this.getExercisesByMuscles(),
@@ -66,19 +75,20 @@ export default class extends Component {
       <Fragment>
         <Header 
           muscles={muscles}
+          onExerciseCreate={this.handleExerciseCreate}
         />
 
         <Exercises 
           exercise={exercise}
           category={category}
           exercises={exercises}
-          onSelect={this.handleExerciseSelected}
+          onSelect={this.handleExerciseSelect}
         />
 
         <Footer
           category={category}
           muscles={muscles}
-          onSelect={this.handleCategorySelected}
+          onSelect={this.handleCategorySelect}
           />
       </Fragment>
     )

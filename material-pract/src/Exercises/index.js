@@ -1,6 +1,19 @@
 import React, { Fragment } from 'react';
-import { Grid, Paper, Typography, List } from '@material-ui/core';
-import {ListItem, ListItemText } from '@material-ui/core';
+import { 
+  Grid, 
+  Paper, 
+  Typography, 
+  List,
+  IconButton
+} from '@material-ui/core';
+import { 
+  ListItem, 
+  ListItemText, 
+  ListItemSecondaryAction 
+} from '@material-ui/core/List';
+// import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 // import LeftPane from './LeftPane';
 // import RightPane from './RightPane';
 // import Grid from '@material-ui/core/Grid';
@@ -23,7 +36,8 @@ export default ({
     id, 
     title = 'Welcomee!',
     description = 'Please select an exercise from the list on the left!' 
-  }
+  },
+  onDelete
 }) => 
   <Grid container>
     <Grid item sm>
@@ -46,9 +60,14 @@ export default ({
                       button
                       onClick={() => onSelect(id)}
                     >
-                      <ListItemText 
-                      primary={title} 
-                      />
+                      <ListItemText primary={title}/>
+                      <ListItemSecondaryAction>
+                        <IconButton
+                          onClick={() => onDelete(id)}>
+                        >
+                          <DeleteIcon/>
+                        </IconButton>
+                      </ListItemSecondaryAction>
                     </ListItem>
                   )}
                 </List>

@@ -57,8 +57,23 @@ export default withStyles(styles) (class extends Component {
   handleSubmit = () => {
     // TODO: validate
 
-    const{ exercise } = this.state
-    this.props.onCreate(exercise)
+    const { exercise } = this.state
+
+    this.props.onCreate({
+      ...exercise,
+      id: exercise.title.toLocaleLowerCase().replace(/ /g, '-')
+  })
+
+    // clearing out the form,
+    // when creating a new exercise.
+    this.setState({
+      open: false,
+      exercise: {
+        title: '',
+        description: '',
+        muscles: ''
+      }
+    })
   }
 
 

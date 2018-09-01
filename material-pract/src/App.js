@@ -66,6 +66,15 @@ export default class extends Component {
     }))
   )
 
+  // When looping through the exercises,
+  // if the id does not equal to the id of the exercise,
+  // delete the exercise
+  handleExerciseDelete = id => {
+    this.setState(({ exercises }) => ({
+      exercises: exercises.filter(ex => ex.id !== id)
+    }))
+  }
+
   render() {
     const exercises = this.getExercisesByMuscles(),
       { category, exercise } = this.state
@@ -83,6 +92,7 @@ export default class extends Component {
           category={category}
           exercises={exercises}
           onSelect={this.handleExerciseSelect}
+          goDelete={this.handleExerciseDelete}
         />
 
         <Footer

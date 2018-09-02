@@ -6,14 +6,16 @@ import {
   List,
   IconButton
 } from '@material-ui/core';
-import { 
-  ListItem, 
-  ListItemText, 
-  ListItemSecondaryAction 
-} from '@material-ui/core/List';
+// import { 
+//   ListItem, 
+//   ListItemText, 
+//   ListItemSecondaryAction 
+// } from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Delete from '@material-ui/icons/Delete';
 // import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-
 // import LeftPane from './LeftPane';
 // import RightPane from './RightPane';
 // import Grid from '@material-ui/core/Grid';
@@ -62,10 +64,8 @@ export default ({
                     >
                       <ListItemText primary={title}/>
                       <ListItemSecondaryAction>
-                        <IconButton
-                          onClick={() => onDelete(id)}>
-                        >
-                          <DeleteIcon/>
+                        <IconButton onClick={() => onDelete(id)}>
+                          <Delete/>
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>

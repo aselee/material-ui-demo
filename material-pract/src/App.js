@@ -19,6 +19,16 @@ export default class extends Component {
 
   // method
   getExercisesByMuscles() {
+
+    // how to not delete the title of the muscle group, 
+    // by only leaving the title of exercises.
+
+    const initExercises = muscles.reduce((exercises, category) => ({
+      ...exercises,
+      [category]: []
+    }), {}) // deleted exerises will go to an empty array.
+
+    console.log(muscles, initExercises)
     // reducing the state, expecting a callback from the first parameter
     // second parameter, the object being looped over in store.js
 
@@ -39,7 +49,7 @@ export default class extends Component {
         
         //returning the exercises
       return exercises
-    }, {})
+    }, initExercises)
   )
     // should return a object,
     // containing the keys (exercises)
@@ -92,7 +102,7 @@ export default class extends Component {
           category={category}
           exercises={exercises}
           onSelect={this.handleExerciseSelect}
-          goDelete={this.handleExerciseDelete}
+          onDelete={this.handleExerciseDelete}
         />
 
         <Footer

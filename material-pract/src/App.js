@@ -6,8 +6,8 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress: 0:00
-// https://www.youtube.com/watch?v=Vj27n1ekPJY
+// Current progress: 0:00; forms part 1
+// https://www.youtube.com/watch?v=L6HC1bqrLRQ
 
 
 export default class extends Component {

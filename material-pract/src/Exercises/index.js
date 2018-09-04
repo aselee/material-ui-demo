@@ -15,6 +15,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Delete from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
+import Form from './components/Form';
 // import IconButton from '@material-ui/core/IconButton';
 // import LeftPane from './LeftPane';
 // import RightPane from './RightPane';
@@ -32,14 +34,16 @@ const styles = {
 
 export default ({
   exercises, 
-  category, 
+  category,
+  editMode,
   onSelect, 
   exercise: { 
     id, 
     title = 'Welcomee!',
     description = 'Please select an exercise from the list on the left!' 
   },
-  onDelete
+  onDelete, 
+  onSelectEdit
 }) => 
   <Grid container>
     <Grid item sm>
@@ -64,6 +68,9 @@ export default ({
                     >
                       <ListItemText primary={title}/>
                       <ListItemSecondaryAction>
+                        <IconButton onClick={() => onSelectEdit(id)}>
+                          <Edit/>
+                        </IconButton>
                         <IconButton onClick={() => onDelete(id)}>
                           <Delete/>
                         </IconButton>
@@ -79,17 +86,22 @@ export default ({
     </Grid>
     <Grid item sm>
       <Paper styles={styles.Paper}>
-        <Typography
-          variant="display1"
-        >
-        {title}
-        </Typography>
-        <Typography
-          variant="subheading"
-          style={{marginTop: 20}}
-        >
-         {description} 
-        </Typography>
+      { editMode
+      ? <Form />
+      : <Fragment>
+          <Typography
+            variant="display1"
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant="subheading"
+            style={{marginTop: 20}}
+          >
+            {description} 
+          </Typography>
+        </Fragment>
+      }
       </Paper>
     </Grid>
   </Grid>

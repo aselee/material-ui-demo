@@ -4,7 +4,7 @@ import {
   Toolbar,
   Typography
 } from '@material-ui/core';
-import CreateDialog from '../Exercises/Dialogs/Create';
+import CreateDialog from '../components/Dialog';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
 

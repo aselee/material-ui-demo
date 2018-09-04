@@ -6,14 +6,14 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress: 0:00; forms part 1
+// Current progress: 10:30; forms part 1
 // https://www.youtube.com/watch?v=L6HC1bqrLRQ
 
 
 export default class extends Component {
   state = {
     exercises,
-    exercise: {}
+    exercise: {},
     
   }
 
@@ -61,33 +61,38 @@ export default class extends Component {
     })
   }
 
-  handleExerciseSelect = id => {
+  handleExerciseSelect = id => 
     this.setState(({ exercises }) => ({
       exercise: exercises.find(ex => ex.id === id)
     }))
-  }
 
-  handleExerciseCreate = exercise => (
+  handleExerciseCreate = exercise =>
     this.setState(({ exercises }) => ({
       exercises: [
         ...exercises,
         exercise
       ]
     }))
-  )
+  
 
   // When looping through the exercises,
   // if the id does not equal to the id of the exercise,
   // delete the exercise
-  handleExerciseDelete = id => {
+  handleExerciseDelete = id =>
     this.setState(({ exercises }) => ({
       exercises: exercises.filter(ex => ex.id !== id)
     }))
-  }
+
+  handleExerciseSelectEdit = id => 
+    this.setState(({ exercises }) => ({
+      exercise: exercises.find(ex => ex.id === id),
+      editMode: true
+    }))
+
 
   render() {
     const exercises = this.getExercisesByMuscles(),
-      { category, exercise } = this.state
+      { category, exercise, editMode } = this.state
 
     // console.log(this.getExercisesByMuscles())
     return(
@@ -101,8 +106,10 @@ export default class extends Component {
           exercise={exercise}
           category={category}
           exercises={exercises}
+          editMode={editMode}
           onSelect={this.handleExerciseSelect}
           onDelete={this.handleExerciseDelete}
+          onSelectEdit={this.handleExerciseSelectEdit}
         />
 
         <Footer

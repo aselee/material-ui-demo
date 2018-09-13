@@ -6,8 +6,8 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Current progress: 10:30; forms part 1
-// https://www.youtube.com/watch?v=L6HC1bqrLRQ
+// Forms part 2, should go back to part 1
+// https://www.youtube.com/watch?v=ikkwa1BN0fA
 
 
 export default class extends Component {
@@ -73,7 +73,6 @@ export default class extends Component {
         exercise
       ]
     }))
-  
 
   // When looping through the exercises,
   // if the id does not equal to the id of the exercise,
@@ -89,6 +88,14 @@ export default class extends Component {
       editMode: true
     }))
 
+  handleExerciseEdit = exercise =>
+    this.setState(({ exercises }) => ({
+      exercises: [
+        ...exercises.filter(ex => ex.id !== exercise.id),
+        exercise
+      ]
+    }))
+ /// this is where i left off
 
   render() {
     const exercises = this.getExercisesByMuscles(),
@@ -107,9 +114,11 @@ export default class extends Component {
           category={category}
           exercises={exercises}
           editMode={editMode}
+          muscles={muscles}
           onSelect={this.handleExerciseSelect}
           onDelete={this.handleExerciseDelete}
           onSelectEdit={this.handleExerciseSelectEdit}
+          onEdit={this.handleExerciseEdit}
         />
 
         <Footer

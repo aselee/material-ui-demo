@@ -6,21 +6,12 @@ import {
   List,
   IconButton
 } from '@material-ui/core';
-// import { 
-//   ListItem, 
-//   ListItemText, 
-//   ListItemSecondaryAction 
-// } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
-import Form from './components/Form';
-// import IconButton from '@material-ui/core/IconButton';
-// import LeftPane from './LeftPane';
-// import RightPane from './RightPane';
-// import Grid from '@material-ui/core/Grid';
+import Form from '../components/Form';
 
 const styles = {
   Paper: { 
@@ -33,17 +24,20 @@ const styles = {
 }
 
 export default ({
+  muscles,
   exercises, 
   category,
   editMode,
-  onSelect, 
+  onSelect,
+  exercise,
   exercise: { 
     id, 
     title = 'Welcomee!',
     description = 'Please select an exercise from the list on the left!' 
   },
   onDelete, 
-  onSelectEdit
+  onSelectEdit,
+  onEdit
 }) => 
   <Grid container>
     <Grid item sm>
@@ -87,7 +81,12 @@ export default ({
     <Grid item sm>
       <Paper styles={styles.Paper}>
       { editMode
-      ? <Form />
+      ? <Form
+          exercise={exercise}
+          muscles={muscles}
+          onSubmit={onEdit}
+      
+      />
       : <Fragment>
           <Typography
             variant="display1"

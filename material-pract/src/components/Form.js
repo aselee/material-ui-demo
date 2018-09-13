@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {
+  TextField,
+  Select,
+  Button,
+  Dialog
+} from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -6,17 +12,24 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   FormControl: {
-    width: 500
+    width: 200
   }
 })
 
 
-export default withStyles(styles) (class extends Components {
-  state = {
-    title: '',
-    description: '',
-    muscles: ''
+export default withStyles(styles) (class extends Component {
+  state = this.getInitState()
+
+  getInitState() {
+    const { exercise } = this.props
+
+    return exercise ? exercise : {
+      title: '',
+      description: '',
+      muscles: ''
+    }
   }
+
 
   handleChange = name => ({ target: { value } }) => 
     this.setState({
@@ -35,7 +48,7 @@ export default withStyles(styles) (class extends Components {
 
     const { exercise } = this.state
 
-    this.props.onCreate({
+    this.props.onSubmit({
       ...exercise,
       id: exercise.title.toLocaleLowerCase().replace(/ /g, '-')
   })
@@ -54,7 +67,8 @@ export default withStyles(styles) (class extends Components {
 
 
   render() {
-    const { classes, muscles: categories } = this.props
+    const { title, description, muscles } = this.state,
+          { classes, muscles: categories } = this.props
 
     return <form>
     <TextField
@@ -90,6 +104,14 @@ export default withStyles(styles) (class extends Components {
       margin="normal"
       className={classes.FormControl}
     />
+    <br />
+    <Button 
+      color="primary" 
+      variant="raised"
+      onClick={this.handleSubmit}
+    >
+      Create Exercises
+    </Button>
   </form>
   }
 })

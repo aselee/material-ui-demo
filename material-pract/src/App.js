@@ -6,7 +6,7 @@ import { muscles, exercises } from './store.js'
 import './App.css';
 
 
-// Forms part 2, should go back to part 1
+// Forms part 2, 10:09
 // https://www.youtube.com/watch?v=ikkwa1BN0fA
 
 
@@ -63,7 +63,8 @@ export default class extends Component {
 
   handleExerciseSelect = id => 
     this.setState(({ exercises }) => ({
-      exercise: exercises.find(ex => ex.id === id)
+      exercise: exercises.find(ex => ex.id === id),
+      editMode: false
     }))
 
   handleExerciseCreate = exercise =>
@@ -79,7 +80,9 @@ export default class extends Component {
   // delete the exercise
   handleExerciseDelete = id =>
     this.setState(({ exercises }) => ({
-      exercises: exercises.filter(ex => ex.id !== id)
+      exercises: exercises.filter(ex => ex.id !== id),
+      editMode: false,
+      exercise: {}
     }))
 
   handleExerciseSelectEdit = id => 
@@ -93,7 +96,8 @@ export default class extends Component {
       exercises: [
         ...exercises.filter(ex => ex.id !== exercise.id),
         exercise
-      ]
+      ],
+      exercise
     }))
  /// this is where i left off
 

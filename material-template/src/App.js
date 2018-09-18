@@ -15,6 +15,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 // trying to see if we can add image in the card.
 // work on  that next.
+// issue with git?
 
 const styles = theme => ({
   layout: {

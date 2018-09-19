@@ -4,14 +4,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-// import CardMedia from '@material-ui/core/CardMedia';
-import { withStyles } from '@material-ui/core/styles';
+import Pic from './codebrain.jpg';
+
 
 // Do I need const express? Check past projects
 // const express = require("express");
@@ -41,20 +40,10 @@ const styles = theme => ({
   toolbarSecondary: {
     justifyContent: 'space-between',
   },
-  mainFeaturedPost: {
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing.unit * 4,
-    height: 250
-  },
-  mainFeaturedPostContent: {
-    padding: `${theme.spacing.unit * 6}px`,
-    [theme.breakpoints.up('md')]: {
-      paddingRight: 0,
-    },
-    cardMedia: {
-      width: 160,
-    },
+  footer: {
+    backgroundColor: theme.palette.background.paper, // can add colors
+    marginTop: theme.spacing.unit * 8,
+    padding: `${theme.spacing.unit * 6}px 0`,
   },
 });
 
@@ -96,55 +85,38 @@ function Template(props) {
           </Toolbar>
           <main>
             {/* Pic of me and title */}
-            <Card className={classes.mainFeaturedPost}>
-              <Grid container>
-                <Grid item md={6}>
-                  <div className={classes.mainFeaturedPostContent}>
-                    <Typography variant="display2" color="inherit" gutterBottom>
-                      title of something here
-                    </Typography>
-                    <Typography variant="headline" color="inherit" paragraph>
-                      Multiple of lines text here probably wont use this? 
-                      Not really sure but adding it for testing.
-                    </Typography>
-                    <Typography variant="title" color="inherit">
-                      continue reading this...
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
+            <Card className={classes.card}>
+              <CardActionArea>
+              <img src={Pic}/>
+                <CardMedia
+                  className={classes.media}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2">
+                    Lizard
+                  </Typography>
+                  <Typography component="p">
+                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                    across all continents except Antarctica
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </main>
         </div>
-        {/* testing card here */}
-        <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
-            Lizard
+        {/* Adding Footer */}
+        <footer className={classes.footer}>
+          <Typography variant="title" align="center" gutterBottom>
+              Footer here
           </Typography>
-          <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          <Typography variant="subheading" align="center" color="textSecondary" component="p">
           </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+        </footer>
+        {/* End of Footer */}
       </React.Fragment>
-    )
+    );
 };
 
 export default withStyles(styles)(Template);

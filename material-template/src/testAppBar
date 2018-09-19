@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import AppBar from '@material-ui/core/AppBar';
+import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -30,7 +30,10 @@ const styles = theme => ({
       marginRight: 'auto',
     },
   },
-  toolbarMain: {
+  root: {
+    flexGrow: 1,
+  },
+  toolbarLine: {
     borderBottom: `1px solid ${theme.palette.grey[500]}`,
   },
   toolbarTitle: {
@@ -65,7 +68,7 @@ function Template(props) {
         <CssBaseline />
         {/* Header section */}
         <div className={classes.layout}>
-          <Toolbar className={classes.toolbarMain}>
+          <Toolbar className={classes.toolbarLine}>
             <Button size="small">Button1</Button>
             <Typography
               variant="headline"
@@ -81,6 +84,8 @@ function Template(props) {
             </Button>
           </Toolbar>
           {/* Section; need to create buttons */}
+          <div className={classes.root}>
+          <AppBar position="static">
           <Toolbar variant="dense" className={classes.toolbarSecondary}>
             {sections.map(section => (
               <Button size="small" className={classes.button}>
@@ -90,6 +95,8 @@ function Template(props) {
               </Button>
             ))}
           </Toolbar>
+          </AppBar>
+          </div>
           <main>
             {/* Pic of me and title */}
             <Card className={classes.card}>

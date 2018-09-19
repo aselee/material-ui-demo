@@ -6,7 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 
 // Do I need const express? Check past projects
@@ -29,7 +33,7 @@ const styles = theme => ({
     },
   },
   toolbarMain: {
-    borderBottom: `1px solid ${theme.palette.grey[300]}`,
+    borderBottom: `1px solid ${theme.palette.grey[500]}`,
   },
   toolbarTitle: {
     flex: 1,
@@ -41,11 +45,15 @@ const styles = theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing.unit * 4,
+    height: 250
   },
   mainFeaturedPostContent: {
     padding: `${theme.spacing.unit * 6}px`,
     [theme.breakpoints.up('md')]: {
       paddingRight: 0,
+    },
+    cardMedia: {
+      width: 160,
     },
   },
 });
@@ -107,8 +115,34 @@ function Template(props) {
               </Grid>
             </Card>
           </main>
-            
         </div>
+        {/* testing card here */}
+        <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Lizard
+          </Typography>
+          <Typography component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
       </React.Fragment>
     )
 };

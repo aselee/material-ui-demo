@@ -15,10 +15,8 @@ import Pic from './codebrain.jpg';
 // Do I need const express? Check past projects
 // const express = require("express");
 
-
-// trying to see if we can add image in the card.
-// work on  that next.
-// issue with git?
+// added image
+// need to work on resizing image and card
 
 const styles = theme => ({
   layout: {

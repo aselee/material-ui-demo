@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -29,7 +30,10 @@ const styles = theme => ({
       marginRight: 'auto',
     },
   },
-  toolbarMain: {
+  root: {
+    flexGrow: 1,
+  },
+  toolbarLine: {
     borderBottom: `1px solid ${theme.palette.grey[500]}`,
   },
   toolbarTitle: {
@@ -37,6 +41,10 @@ const styles = theme => ({
   },
   toolbarSecondary: {
     justifyContent: 'space-between',
+  },
+  button: {
+    margin: theme.spacing.unit,
+    width: 500,
   },
   footer: {
     backgroundColor: theme.palette.background.paper, // can add colors
@@ -58,8 +66,9 @@ function Template(props) {
     return (
       <React.Fragment>
         <CssBaseline />
+        {/* Header section */}
         <div className={classes.layout}>
-          <Toolbar className={classes.toolbarMain}>
+          <Toolbar className={classes.toolbarLine}>
             <Button size="small">Button1</Button>
             <Typography
               variant="headline"
@@ -74,15 +83,41 @@ function Template(props) {
               Button2
             </Button>
           </Toolbar>
+          {/* Section; need to create buttons */}
+          <div className={classes.root}>
+          <AppBar position="static">
           <Toolbar variant="dense" className={classes.toolbarSecondary}>
             {sections.map(section => (
+              <Button size="small" className={classes.button}>
               <Typography color="inherit" noWrap key={section}>
                 {section}
               </Typography>
+              </Button>
             ))}
           </Toolbar>
+          </AppBar>
+          </div>
           <main>
             {/* Pic of me and title */}
+            <Card className={classes.card}>
+              <CardActionArea>
+              <img src={Pic}/>
+                <CardMedia
+                  className={classes.media}
+                  image="/static/images/cards/contemplative-reptile.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2">
+                    Lizard
+                  </Typography>
+                  <Typography component="p">
+                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                    across all continents except Antarctica
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
             <Card className={classes.card}>
               <CardActionArea>
               <img src={Pic}/>

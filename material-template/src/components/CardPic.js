@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Pic from '../codebrain.jpg';
+import { withStyles } from '@material-ui/core/styles';
 
 
-export default class CardPic extends Component {
-// function CardPic(props) {
+// export default class CardPic extends Component {
 
-  // const { classes } = props;
+const styles = theme => ({
+  card: {
+    display: 'flex',
+  },
+});
+
+function CardPic(props) {
+
+  const { classes } = props;
 
   return(
     <Card className={classes.card}>
@@ -35,4 +43,4 @@ export default class CardPic extends Component {
   )
 };
 
-// export default CardPic;
+export default withStyles(styles)(CardPic);

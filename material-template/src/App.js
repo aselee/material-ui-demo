@@ -3,8 +3,10 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import MainContent from './components/MainContent';
+import Intro from './components/Intro';
+// import MainContent from './components/MainContent';
 import Pic from './codebrain.jpg';
+
 
 // unable to find test1.md in main content
 
@@ -30,8 +32,9 @@ class Template extends React.Component {
             <div>
               <img src={Pic}/>
             </div>
-            {/* <CardPic/> */}
-            <MainContent/>
+            <Intro/>
+            
+            {/* <MainContent/> */}
           </main>
         {/* Adding Footer */}
           <Footer/>

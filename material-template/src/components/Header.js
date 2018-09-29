@@ -33,7 +33,6 @@ const styles = theme => ({
 const sections = [
   'About',
   'Projects',
-  'Social',
   'Contact'
 ];
 

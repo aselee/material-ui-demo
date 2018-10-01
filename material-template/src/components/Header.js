@@ -42,16 +42,18 @@ function Header(props) {
   return (
     <div className={classes.layout}>
       <Toolbar className={classes.toolbarMain}>
-        <Button size="small">Button1</Button>
-        <Typography
-          variant="headline"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
+        <Button size="small">
+          Button1
+        </Button>
+          <Typography
+            variant="headline"
+            color="inherit"
+            align="center"
+            noWrap
+            className={classes.toolbarTitle}
+          >
           Webportfolio Template
-        </Typography>
+          </Typography>
         <Button variant="outlined" size="small">
           Button2
         </Button>
@@ -68,6 +70,6 @@ function Header(props) {
       </Toolbar>
     </div>
   )
-}
+};
 
 export default withStyles(styles)(Header);

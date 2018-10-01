@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+const styles = theme => ({
+  listItem: {
+    marginTop: theme.spacing.unit,
+  },
+});
 
 const renderers = {
   /* eslint-disable-next-line react/prop-types */
@@ -30,6 +36,11 @@ const renderers = {
 
     return <Typography {...props} gutterBottom variant={variant} paragraph={paragraph} />;
   },
+  listItem: withStyles(styles)(({ classes, tight, ordered, ...props }) => (
+    <li className={classes.listItem}>
+      <Typography component="span" {...props} />
+    </li>
+  )),
   paragraph: props => <Typography {...props} paragraph />,
 };
 

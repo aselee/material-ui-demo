@@ -3,24 +3,14 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Intro from './components/Intro';
-// import MainContent from './components/MainContent';
+import MainContent from './components/MainContent';
 import Pic from './codebrain.jpg';
-
-
-// unable to find test1.md in main content
-
-
-
-
-// Do I need const express? Check past projects
-// const express = require("express");
-
-// added image
-// need to work on resizing image and card
+import Intro from './components/Intro';
+import Mdtest from './components/Mdtest';
 
 
 class Template extends React.Component {
+
   render () {
     return (
       <React.Fragment>
@@ -33,8 +23,9 @@ class Template extends React.Component {
               <img src={Pic}/>
             </div>
             <Intro/>
+            <Mdtest/>
             
-            {/* <MainContent/> */}
+            <MainContent/>
           </main>
         {/* Adding Footer */}
           <Footer/>
@@ -45,3 +36,5 @@ class Template extends React.Component {
 };
 
 export default Template;
+
+// export default withStyles(styles)(Template);

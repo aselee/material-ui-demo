@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
-import Markdown from '../mark/Markdown';
-import post1 from './BlogTest.md';
+// import Markdown from '../mark/Markdown';
+// import post from './BlogTest.md';
 
 
 
@@ -19,10 +19,6 @@ const styles = theme => ({
   },
 });
 
-const post = [
-  post1
-];
-
 function MainContent(props) {
   const { classes } = props;
 
@@ -30,15 +26,15 @@ function MainContent(props) {
   return(
     <Grid container spacing={40} className={classes.mainGrid}>
     {/* Main content */}
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} md={12}>
         <Typography variant="title" gutterBottom>
-          From the Firehose
+          Hi Welcome to my webpage
         </Typography>
         <Divider />
-          <Markdown 
-          className={classes.markdown} key={post.substring(0, 40)}>
+          {/* <Markdown 
+          className={classes.markdown}>
             {post}
-          </Markdown>
+          </Markdown> */}
       </Grid>
     </Grid>
   )
@@ -49,3 +45,4 @@ MainContent.propTypes = {
 };
 
 export default withStyles(styles)(MainContent);
+

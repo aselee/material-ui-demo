@@ -18,6 +18,7 @@ import Markdown from './Markdown';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import Post1 from './Post1.js';
 
 const styles = theme => ({
   layout: {
@@ -217,6 +218,7 @@ function Blog(props) {
                 From the Firehose
               </Typography>
               <Divider />
+              <Post1 />
               {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post}

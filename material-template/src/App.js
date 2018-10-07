@@ -7,6 +7,7 @@ import MainContent from './components/MainContent';
 import Pic from './codebrain.jpg';
 import Intro from './components/Intro';
 import Mdtest from './components/Mdtest';
+import Album from './components/Album';
 
 
 class Template extends React.Component {
@@ -24,6 +25,7 @@ class Template extends React.Component {
             </div>
             <Intro/>
             <Mdtest/>
+            <Album />
             
             <MainContent/>
           </main>
